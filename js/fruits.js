@@ -25,11 +25,9 @@ export function createFruit(width, height, isBomb) {
   const targetX = width * randomBetween(0.3, 0.7);
   const vx = (targetX - x) / flightTime;
 
-  // TODO étape 4 : pour l'instant c'est toujours le premier fruit de la liste.
-  // Choisis-en un au hasard : Math.random() donne un nombre entre 0 et 1,
-  // multiplie-le par CONFIG.FRUITS.length et arrondis à l'entier inférieur (Math.floor).
-  const fruitIndex = 0;
-  const emoji = isBomb ? CONFIG.BOMB : CONFIG.FRUITS[fruitIndex];
+  const emoji = isBomb
+    ? CONFIG.BOMB
+    : CONFIG.FRUITS[Math.floor(Math.random() * CONFIG.FRUITS.length)];
 
   return {
     emoji,
@@ -46,17 +44,15 @@ export function createFruit(width, height, isBomb) {
 
 // Fait avancer un objet (fruit ou moitié de fruit) pendant dt secondes
 export function moveObject(obj, dt, height) {
-  // TODO étape 4 : la physique ! À chaque image, pendant dt secondes :
-  //   1. la gravité augmente la vitesse vers le bas :  obj.vy += CONFIG.GRAVITY * height * dt;
-  //   2. la position avance selon la vitesse :         obj.x += obj.vx * dt;   (et pareil pour y)
-  //   3. le fruit tourne sur lui-même :                obj.angle += obj.spin * dt;
+  obj.vy += CONFIG.GRAVITY * height * dt; // la gravité accélère vers le bas
+  obj.x += obj.vx * dt;
+  obj.y += obj.vy * dt;
+  obj.angle += obj.spin * dt;
 }
 
 // Vrai quand l'objet est retombé sous le bas de l'écran
 export function isOffScreen(obj, height) {
-  // TODO étape 4 : renvoie true si le fruit redescend (obj.vy > 0)
-  // ET que son bord supérieur (obj.y - obj.radius) est plus bas que le bas de l'écran (height).
-  return false;
+  return obj.vy > 0 && obj.y - obj.radius > height;
 }
 
 // Dessine un emoji centré, tourné d'un certain angle
@@ -73,4 +69,44 @@ export function drawEmoji(ctx, emoji, x, y, radius, angle = 0) {
 
 export function drawFruit(ctx, fruit) {
   drawEmoji(ctx, fruit.emoji, fruit.x, fruit.y, fruit.radius, fruit.angle);
+}
+
+// Coupe un fruit en deux moitiés qui s'écartent selon l'angle de la lame
+export function sliceFruit(fruit, cutAngle) {
+  // Direction perpendiculaire à la coupe : c'est là que les moitiés s'écartent
+  const nx = -Math.sin(cutAngle);
+  const ny = Math.cos(cutAngle);
+  const push = fruit.radius * 3;
+
+  return [1, -1].map((side) => ({
+    emoji: fruit.emoji,
+    x: fruit.x,
+    y: fruit.y,
+    vx: fruit.vx + nx * push * side,
+    vy: fruit.vy + ny * push * side,
+    radius: fruit.radius,
+    angle: fruit.angle,
+    spin: fruit.spin + side * 2,
+    cut: cutAngle - fruit.angle, // angle de la coupe vu depuis le fruit
+    side,
+  }));
+}
+
+// Dessine une moitié : on dessine le fruit entier mais on n'en garde
+// qu'un côté grâce à un "masque" (clip)
+export function drawPiece(ctx, piece) {
+  const r = piece.radius;
+  ctx.save();
+  ctx.translate(piece.x, piece.y);
+  ctx.rotate(piece.angle);
+
+  ctx.rotate(piece.cut);
+  ctx.beginPath();
+  if (piece.side > 0) ctx.rect(-r * 2, 0, r * 4, r * 2);
+  else ctx.rect(-r * 2, -r * 2, r * 4, r * 2);
+  ctx.clip();
+  ctx.rotate(-piece.cut);
+
+  drawEmoji(ctx, piece.emoji, 0, 0, r);
+  ctx.restore();
 }
