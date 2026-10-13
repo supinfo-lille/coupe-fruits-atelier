@@ -1,19 +1,18 @@
-# ✅ Étape 2 terminée : la main est détectée (branche `etape-02-main`)
+# ✅ Étape 3 terminée : le doigt est une lame (branche `etape-03-lame`)
 
-## Étape 3 — La lame
+## Étape 4 — Lancer des fruits
 
-**Fichiers à modifier :** `js/blade.js` puis `js/main.js`
+**Fichier à modifier :** `js/fruits.js`
 
-1. Dans `blade.js`, complète `addBladePoint()` : chaque position est ajoutée à l'historique.
-2. Toujours dans `blade.js`, complète `updateBlade()` : les positions trop anciennes disparaissent.
-3. Teste avec la souris : elle laisse maintenant une traînée lumineuse.
-4. Dans `main.js`, branche le bout de l'index sur la lame (TODO dans la fonction `loop`).
+1. Dans `moveObject()`, programme la physique : gravité, déplacement, rotation.
+2. Dans `isOffScreen()`, détecte les fruits retombés sous l'écran.
+3. Dans `createFruit()`, choisis un fruit au hasard dans la liste.
 
-**✅ C'est réussi si** ton index laisse une traînée qui s'efface derrière lui. La touche **H** affiche le squelette.
+**✅ C'est réussi si** des fruits variés montent depuis le bas de l'écran, tournent et retombent.
 
 **🎯 Défis (dans `js/config.js`) :**
-- Change la couleur de la lame avec `BLADE_COLOR` et `BLADE_GLOW`.
-- Allonge la traînée avec `BLADE_DURATION`.
-- Utilise le pouce comme lame (`FINGER_TIP: 4`).
+- Joue sur la Lune : divise `GRAVITY` par 6.
+- Change la taille des fruits avec `FRUIT_SIZE`.
+- Ajoute tes propres emojis dans `FRUITS` (🥥, 🍒, 🫐…).
 
-Bloqué ? Récupère la branche `etape-03-lame`.
+Bloqué ? Récupère la branche `etape-04-fruits`.
