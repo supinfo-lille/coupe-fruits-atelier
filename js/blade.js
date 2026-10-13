@@ -30,10 +30,7 @@ export function getBladeSegment(time) {
   if (time - b.time > 0.1) return null;
   const duration = b.time - a.time;
   if (duration <= 0) return null;
-  // TODO étape 5 : calcule la vitesse de la lame, en pixels par seconde.
-  // vitesse = distance parcourue / durée
-  // La distance entre a et b se calcule avec Math.hypot(b.x - a.x, b.y - a.y).
-  const speed = 0;
+  const speed = Math.hypot(b.x - a.x, b.y - a.y) / duration;
   return { a, b, speed };
 }
 

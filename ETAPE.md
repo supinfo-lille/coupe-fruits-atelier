@@ -1,16 +1,17 @@
-# ✅ Étape 4 terminée : les fruits volent (branche `etape-04-fruits`)
+# ✅ Étape 5 terminée : on coupe les fruits (branche `etape-05-decoupe`)
 
-## Étape 5 — Couper les fruits
+## Étape 6 — Un vrai jeu : vies, bombes et fin de partie
 
-**Fichiers à modifier :** `js/collision.js` puis `js/blade.js`
+**Fichier à modifier :** `js/game.js` (3 TODO)
 
-1. Dans `collision.js`, termine `segmentHitsCircle()` : la lame touche-t-elle le fruit ?
-2. Dans `blade.js`, fonction `getBladeSegment()` : calcule la vitesse de la lame.
-   Un fruit n'est coupé que si le geste est assez rapide.
+1. Dans `spawn()`, fais apparaître des bombes 💣 de temps en temps.
+2. Couper une bombe déclenche un flash et termine la partie.
+3. Un fruit qui retombe sans être coupé coûte une vie ❤️. À zéro vie, c'est perdu.
 
-**✅ C'est réussi si** un geste rapide coupe le fruit en deux et augmente le score,
-alors qu'un geste lent passe à travers sans le couper.
+**✅ C'est réussi si** une partie complète fonctionne : on tranche la pastèque pour commencer,
+on perd des vies, la partie s'arrête, et on peut rejouer.
 
-**🎯 Défi :** règle `BLADE_MIN_SPEED` dans `js/config.js` pour que le jeu soit ni trop facile, ni trop dur.
+**🎯 Défis (dans `js/config.js`) :** règle la difficulté avec `LIVES`, `BOMB_CHANCE`,
+`SPAWN_INTERVAL_MIN` et `SPAWN_ACCELERATION`.
 
-Bloqué ? Récupère la branche `etape-05-decoupe`.
+Bloqué ? Récupère la branche `etape-06-jeu-complet`.
