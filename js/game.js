@@ -65,10 +65,7 @@ function endGame(width, height) {
 function spawn(width, height) {
   const count = Math.random() < 0.25 ? 2 : 1;
   for (let i = 0; i < count; i++) {
-    // TODO étape 6 : pour l'instant il n'y a jamais de bombe.
-    // isBomb doit valoir true avec une probabilité CONFIG.BOMB_CHANCE.
-    // Indice : Math.random() < CONFIG.BOMB_CHANCE  est vrai dans 15 % des cas.
-    const isBomb = false;
+    const isBomb = Math.random() < CONFIG.BOMB_CHANCE;
     game.fruits.push(createFruit(width, height, isBomb));
   }
 }
@@ -120,8 +117,8 @@ export function updateGame(dt, width, height, blade) {
     if (game.state === "playing" && isCut(fruit, blade, height)) {
       game.fruits.splice(game.fruits.indexOf(fruit), 1);
       if (fruit.isBomb) {
-        // TODO étape 6 : boum ! Déclenche le flash (game.flash = 0.5)
-        // puis termine la partie avec endGame(width, height).
+        game.flash = 0.5;
+        endGame(width, height);
       } else {
         game.score += 1;
         game.pieces.push(...sliceFruit(fruit, bladeAngle(blade)));
@@ -131,9 +128,10 @@ export function updateGame(dt, width, height, blade) {
 
     if (isOffScreen(fruit, height)) {
       game.fruits.splice(game.fruits.indexOf(fruit), 1);
-      // TODO étape 6 : un fruit raté coûte une vie.
-      // Si la partie est en cours (game.state === "playing") et que ce n'est pas une bombe :
-      //   retire une vie à game.lives, et si game.lives arrive à 0, appelle endGame(width, height).
+      if (game.state === "playing" && !fruit.isBomb) {
+        game.lives -= 1;
+        if (game.lives <= 0) endGame(width, height);
+      }
     }
   }
 

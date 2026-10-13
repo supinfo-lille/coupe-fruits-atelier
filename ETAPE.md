@@ -1,17 +1,16 @@
-# ✅ Étape 5 terminée : on coupe les fruits (branche `etape-05-decoupe`)
+# 🎉 Le jeu est complet ! (branche `etape-06-jeu-complet`)
 
-## Étape 6 — Un vrai jeu : vies, bombes et fin de partie
+Bravo ! Touche **H** : squelette de la main. Touche **F** : images par seconde.
 
-**Fichier à modifier :** `js/game.js` (3 TODO)
+## Pour aller plus loin : les bonus
 
-1. Dans `spawn()`, fais apparaître des bombes 💣 de temps en temps.
-2. Couper une bombe déclenche un flash et termine la partie.
-3. Un fruit qui retombe sans être coupé coûte une vie ❤️. À zéro vie, c'est perdu.
+Chaque bonus est une branche qui part de celle-ci. Choisis celui qui te tente.
 
-**✅ C'est réussi si** une partie complète fonctionne : on tranche la pastèque pour commencer,
-on perd des vies, la partie s'arrête, et on peut rejouer.
-
-**🎯 Défis (dans `js/config.js`) :** règle la difficulté avec `LIVES`, `BOMB_CHANCE`,
-`SPAWN_INTERVAL_MIN` et `SPAWN_ACCELERATION`.
-
-Bloqué ? Récupère la branche `etape-06-jeu-complet`.
+| Branche | Niveau | Contenu |
+|---|---|---|
+| `bonus-sons-effets` | ⭐ | Sons, éclaboussures de jus, combos |
+| `bonus-leaderboard-local` | ⭐ | Pseudo et top 10 des meilleurs scores |
+| `bonus-gestes` | ⭐⭐ | Fermer le poing pour mettre en pause |
+| `bonus-deux-mains` | ⭐⭐ | Une lame par main |
+| `bonus-leaderboard-salle` | ⭐⭐⭐ | Un classement commun à toute la salle, avec un serveur |
+| `bonus-architecture` | ⭐⭐⭐ | Réorganiser le code en classes |
