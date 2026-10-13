@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Coupe-Fruits · mise en jambe JavaScript</title>
+  <style>
+    body { margin: 0; display: flex; min-height: 100vh; background: #14112e; color: #fff; font-family: Arial, Helvetica, sans-serif; }
+    aside { width: 380px; padding: 28px; box-sizing: border-box; background: #1c1a33; }
+    h1 { margin: 0 0 8px; font-size: 26px; }
+    p { color: #b9b4e3; line-height: 1.4; }
+    ol { padding-left: 22px; line-height: 1.5; }
+    li { margin-bottom: 10px; }
+    code { background: #3b3092; padding: 2px 6px; border-radius: 4px; }
+    main { flex: 1; display: flex; align-items: center; justify-content: center; padding: 24px; }
+    canvas { background: #f2f0fb; border-radius: 16px; max-width: 100%; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <aside>
+    <h1>🏃 Mise en jambe</h1>
+    <p>Ouvre le fichier <code>bases/exercices.js</code> et complète les TODO dans l'ordre.
+       Enregistre, puis recharge cette page pour voir le résultat.</p>
+    <ol>
+      <li>Variables et calculs (regarde la console : touche <code>F12</code>)</li>
+      <li>Un objet pour décrire une balle</li>
+      <li>La balle tombe avec la gravité</li>
+      <li>La balle rebondit</li>
+      <li>Une pluie de balles en cliquant</li>
+    </ol>
+    <p>Corrigé : branche <code>etape-00-bases</code>.</p>
+  </aside>
+  <main>
+    <canvas id="terrain" width="800" height="600"></canvas>
+  </main>
+  <script src="bases/exercices.js"></script>
+</body>
+</html>
