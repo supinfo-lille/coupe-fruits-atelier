@@ -1,16 +1,7 @@
-# 🏁 Point de départ (branche `main`)
+# ✅ Mise en jambe terminée (branche `etape-00-bases`)
 
-## Étape 0 — Prépare ton ordinateur
-
-1. Lance le serveur (voir le `README.md`).
-2. Ouvre la page `check.html` : toutes les lignes doivent être vertes ✅.
-
-## Deux parcours pour démarrer
-
-- **Tu n'as jamais programmé ?** Commence par la mise en jambe : ouvre la page `bases.html`
-  et complète le fichier `bases/exercices.js` (environ 50 minutes). Corrigé : branche `etape-00-bases`.
-  Ensuite, passe à l'étape 1 ci-dessous.
-- **Tu as déjà codé ?** Passe directement à l'étape 1.
+Tu as vu les variables, les objets, les conditions, les boucles, les tableaux et les fonctions :
+c'est tout ce qu'il faut pour construire le jeu. La page `bases.html` montre le corrigé.
 
 ## Étape 1 — Afficher la webcam
 
