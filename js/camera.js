@@ -36,13 +36,10 @@ export function drawVideo(ctx, video, layout) {
 }
 
 // MediaPipe donne des coordonnées entre 0 et 1.
-// Cette fonction les transforme en pixels à l'écran.
+// Cette fonction les transforme en pixels à l'écran (en tenant compte du miroir).
 export function toScreen(point, layout) {
-  // TODO étape 2 : montre ta main… les points sont du mauvais côté !
-  // C'est parce que la vidéo est en miroir, mais pas les coordonnées.
-  // Remplace point.x par (1 - point.x) pour retourner les points eux aussi.
   return {
-    x: layout.x + point.x * layout.w,
+    x: layout.x + (1 - point.x) * layout.w,
     y: layout.y + point.y * layout.h,
   };
 }

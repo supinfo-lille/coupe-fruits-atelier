@@ -43,10 +43,7 @@ export function detectHand(video) {
   if (video.currentTime !== lastVideoTime) {
     lastVideoTime = video.currentTime;
     const result = landmarker.detectForVideo(video, performance.now());
-    // TODO étape 2 : result.landmarks est la liste des mains trouvées (ici 0 ou 1).
-    // S'il y a au moins une main (result.landmarks.length > 0),
-    // range la première (result.landmarks[0]) dans lastHand, sinon mets null.
-    lastHand = null;
+    lastHand = result.landmarks.length > 0 ? result.landmarks[0] : null;
   }
   return lastHand;
 }
@@ -64,12 +61,11 @@ export function drawHand(ctx, hand, layout) {
     ctx.stroke();
   }
 
-  // TODO étape 2 : dessine un petit cercle blanc sur chacun des 21 points.
-  //   ctx.fillStyle = "#ffffff";
-  //   for (const p of points) {
-  //     ctx.beginPath();
-  //     ctx.arc(p.x, p.y, 5, 0, Math.PI * 2);
-  //     ctx.fill();
-  //   }
-  // Défi : dessine le point n°8 (bout de l'index) plus gros et en couleur.
+  points.forEach((p, index) => {
+    const isTip = index === CONFIG.FINGER_TIP;
+    ctx.fillStyle = isTip ? CONFIG.BLADE_GLOW : "#ffffff";
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, isTip ? 9 : 5, 0, Math.PI * 2);
+    ctx.fill();
+  });
 }

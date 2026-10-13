@@ -1,17 +1,19 @@
-# ✅ Étape 1 terminée : la webcam s'affiche (branche `etape-01-webcam`)
+# ✅ Étape 2 terminée : la main est détectée (branche `etape-02-main`)
 
-## Étape 2 — Voir les 21 points de la main
+## Étape 3 — La lame
 
-**Fichiers à modifier :** `js/hand.js` puis `js/camera.js`
+**Fichiers à modifier :** `js/blade.js` puis `js/main.js`
 
-1. Dans `hand.js`, fonction `detectHand()` : garde la main trouvée par MediaPipe.
-2. Dans `hand.js`, fonction `drawHand()` : dessine un cercle sur chacun des 21 points.
-3. Montre ta main : les points sont du mauvais côté ! Corrige la fonction `toScreen()` de `camera.js`.
+1. Dans `blade.js`, complète `addBladePoint()` : chaque position est ajoutée à l'historique.
+2. Toujours dans `blade.js`, complète `updateBlade()` : les positions trop anciennes disparaissent.
+3. Teste avec la souris : elle laisse maintenant une traînée lumineuse.
+4. Dans `main.js`, branche le bout de l'index sur la lame (TODO dans la fonction `loop`).
 
-**✅ C'est réussi si** des points blancs reliés par des traits suivent ta main, du bon côté.
+**✅ C'est réussi si** ton index laisse une traînée qui s'efface derrière lui. La touche **H** affiche le squelette.
 
-**🎯 Défis :**
-- Dessine le point n°8 (le bout de l'index) plus gros et en couleur.
-- Donne une couleur différente à chaque doigt.
+**🎯 Défis (dans `js/config.js`) :**
+- Change la couleur de la lame avec `BLADE_COLOR` et `BLADE_GLOW`.
+- Allonge la traînée avec `BLADE_DURATION`.
+- Utilise le pouce comme lame (`FINGER_TIP: 4`).
 
-Bloqué ? Récupère la branche `etape-02-main`.
+Bloqué ? Récupère la branche `etape-03-lame`.
