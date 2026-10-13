@@ -1,18 +1,17 @@
-# ✅ Mise en jambe terminée (branche `etape-00-bases`)
+# ✅ Étape 1 terminée : la webcam s'affiche (branche `etape-01-webcam`)
 
-Tu as vu les variables, les objets, les conditions, les boucles, les tableaux et les fonctions :
-c'est tout ce qu'il faut pour construire le jeu. La page `bases.html` montre le corrigé.
+## Étape 2 — Voir les 21 points de la main
 
-## Étape 1 — Afficher la webcam
+**Fichiers à modifier :** `js/hand.js` puis `js/camera.js`
 
-**Fichier à modifier :** `js/camera.js`
+1. Dans `hand.js`, fonction `detectHand()` : garde la main trouvée par MediaPipe.
+2. Dans `hand.js`, fonction `drawHand()` : dessine un cercle sur chacun des 21 points.
+3. Montre ta main : les points sont du mauvais côté ! Corrige la fonction `toScreen()` de `camera.js`.
 
-1. Complète la fonction `startCamera()` (3 TODO), puis supprime la ligne `throw`.
-2. Recharge la page du jeu : tu te vois… mais à l'envers, comme sur une photo.
-3. Dans `drawVideo()`, retourne l'image pour obtenir un miroir.
+**✅ C'est réussi si** des points blancs reliés par des traits suivent ta main, du bon côté.
 
-**✅ C'est réussi si** tu te vois en plein écran, et que ta main droite apparaît à droite de l'écran.
+**🎯 Défis :**
+- Dessine le point n°8 (le bout de l'index) plus gros et en couleur.
+- Donne une couleur différente à chaque doigt.
 
-**🎯 Défi :** dans `js/config.js`, change `VIDEO_WIDTH` et `VIDEO_HEIGHT` (essaie 320×240). Que remarques-tu ?
-
-Bloqué ? Récupère la branche `etape-01-webcam`.
+Bloqué ? Récupère la branche `etape-02-main`.
